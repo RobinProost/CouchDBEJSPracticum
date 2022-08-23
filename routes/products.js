@@ -78,6 +78,24 @@ router.post('/delete', (req, res) => {
   axios.delete(DB_URL + req.body.id + "?rev=" + req.body.rev).then(response => res.redirect('/')).catch(error => console.log(error))
 })
 
+/* TODO TRY AGAIN MY WAY 
+router.post('/update', (req, res) => {
+  axios.get(DB_URL + DB_VIEWS + 'allProducts' + '?key="' + req.body.name + '"')
+    .then(function (response) {
+      //handle succes
+      if (response.data.rows[0]) {
+        res.render('update.ejs', { product: response.data })
+      } else {
+        res.render('search_not_found.ejs', {})
+      }
+      console.log(response.data.rows);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+}) */
+
 router.get('/edit', (req, res) => {
   axios.get(DB_URL + req.query._id)
     .then(function (response) {
