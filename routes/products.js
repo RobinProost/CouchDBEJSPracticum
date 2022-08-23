@@ -75,10 +75,27 @@ router.post('/delete', (req, res) => {
 
 /* DELETE A PRODUCT WITHOUT VIEWS */
 router.post('/delete', (req, res) => {
-  var id = req.body.id;
-  axios.get(DB_URL + id)
-    .then(response => axios.delete(DB_URL + id + "?rev=" + response.data._rev).then(response => res.redirect('/')).catch(error => console.log(error)))
-    .catch(error => console.log(error))
+  axios.delete(DB_URL + req.body.id + "?rev=" + req.body.rev).then(response => res.redirect('/')).catch(error => console.log(error))
+})
+
+router.get('/edit', (req, res) => {
+  axios.get(DB_URL + req.query._id)
+    .then(function (response) {
+      //console.log(JSON.stringify(response.data))
+      res.render('edit.ejs', { product: response.data });
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+})
+
+// UPDATE A PRODUCT 
+router.post('/edit', (req, res) => {
+  //console.log(req.body)
+  // _rev is in the document!
+  axios.put(DB_URL + req.body._id, req.body)
+    .then(response => res.redirect('/'))
+    .catch(error => console.log(error));
 })
 
 module.exports = router;

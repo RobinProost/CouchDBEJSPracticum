@@ -22,8 +22,8 @@
     </ul>
     <br>
     <form action="/products/delete" method="post">
-        <input type="hidden" name="id" value=<% product.value._id %>>
-        <input type="hidden" name="name" value=<% product.value.name %>>
+        <input type="hidden" name="id" value=<%= product.value._id %>>
+        <input type="hidden" name="rev" value=<%= product.value._rev %>>
         <button type="submit">Delete</button>
     </form>
     <form action="/products">

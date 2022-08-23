@@ -19,15 +19,16 @@
                 <span><b>Description : </b><%= product.value.description %> </span><br>
                 <span><b>Price : </b><%= product.value.price %> </span><br>
                 <span><form action="/products/delete" method="post">
-                    <input type="hidden" name="id" value='<% product.value._id %>'>
-                    <input type="hidden" name="name" value='<% product.value.name %>'>
+                    <input type="hidden" name="id" value='<%= product.value._id %>'>
+                    <input type="hidden" name="rev" value='<%= product.value._rev %>'>
                     <span><button type="submit">delete</button></span>
                 </form></span>
             </li>
             <br>
+            <a href="/products/add">Add product</a>&nbsp;&nbsp;
+            <a href="/products/search">Search product</a>&nbsp;&nbsp;
+            <a href='/products/edit?_id=<%= product.value._id %>'>Edit Product</a> 
             <% }); %> 
     </ul>
-
-    <a href="/products/add">Add product</a>&nbsp;&nbsp;<a href="/products/search">Search product</a>
 </body>
 </html>
