@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+<body>
+    <h1>Result</h1>
+    <br>
+
+    <ul>
+        <li>
+            <span><b>ID : </b><%= product.value._id %> </span><br>
+            <span><b>Name : </b><%= product.value.name %> </span><br>
+            <span><b>Brand : </b><%= product.value.brand %> </span><br>
+            <span><b>Description : </b><%= product.value.description %> </span><br>
+            <span><b>Price : </b><%= product.value.price %> </span><br>
+        </li>
+        <br>
+    </ul>
+    <br>
+    <form action="/products/delete" method="post">
+        <input type="hidden" name="id" value=<% product.value._id %>>
+        <input type="hidden" name="name" value=<% product.value.name %>>
+        <button type="submit">Delete</button>
+    </form>
+    <form action="/products">
+        <button type="submit">Home</button>
+    </form>
+</body>
+</html>
